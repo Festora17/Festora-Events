@@ -799,6 +799,21 @@
                 </div>
             </div>
         </div>
+        <div>
+                            <label for="event-notes" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">Theme, Budget &amp; Notes</label>
+                            <textarea id="event-notes" name="notes" rows="3" placeholder="Share preferred colors/themes, return gift or T-shirt quantities, venue location, or budget range..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-navy-900 focus:ring-2 focus:ring-gold-500/30 outline-none text-sm transition"></textarea>
+                        </div>
+
+                        <!-- Paste right here, just above the submit button -->
+                        <div>
+                            <label for="reference-images" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">Reference Images (Optional)</label>
+                            <input type="file" id="reference-images" name="referenceImages" accept="image/*" multiple class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-navy-900 file:text-gold-400 hover:file:bg-navy-800 cursor-pointer transition" />
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-navy-900 hover:bg-navy-800 text-gold-400 font-bold text-base transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+                            <span>Submit Quote Request</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
     </section>
 
     <!-- ==================== 8. FOOTER ==================== -->
@@ -1322,6 +1337,17 @@
             const dateVal = document.getElementById('event-date').value;
             const guestsVal = document.getElementById('guest-count').value;
 
+            const refFilesCount = document.getElementById('reference-images').files.length;
+            const refText = refFilesCount ? ` • Reference Images Attached: ${refFilesCount}` : '';
+
+            formSummary.textContent =
+                `Request for ${nameInput.value.trim()} (${eventSelect.value})` +
+                (dateVal ? ` on ${dateVal}` : '') +
+                (guestsVal ? ` • Count: ${guestsVal}` : '') +
+                (selectedServices.length ? ` • Services: ${selectedServices.join(', ')}` : '') +
+                refText +
+                `. Our team will reach out shortly!`;
+            
             formSummary.textContent =
                 `Request for ${nameInput.value.trim()} (${eventSelect.value})` +
                 (dateVal ? ` on ${dateVal}` : '') +
