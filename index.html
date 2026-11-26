@@ -1339,14 +1339,6 @@
 
             const refFilesCount = document.getElementById('reference-images').files.length;
             const refText = refFilesCount ? ` • Reference Images Attached: ${refFilesCount}` : '';
-
-            formSummary.textContent =
-                `Request for ${nameInput.value.trim()} (${eventSelect.value})` +
-                (dateVal ? ` on ${dateVal}` : '') +
-                (guestsVal ? ` • Count: ${guestsVal}` : '') +
-                (selectedServices.length ? ` • Services: ${selectedServices.join(', ')}` : '') +
-                refText +
-                `. Our team will reach out shortly!`;
             
             formSummary.textContent =
                 `Request for ${nameInput.value.trim()} (${eventSelect.value})` +
