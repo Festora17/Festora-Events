@@ -408,7 +408,7 @@
                 <div>
                     <span class="text-gold-600 font-semibold text-xs uppercase tracking-[0.2em]">Our Craft &amp; Executions</span>
                     <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navy-900 mt-2">Sample Gallery &amp; Designs</h2>
-                    <p class="text-slate-600 text-sm mt-2 max-w-xl">Click any card to view multiple options &amp; sub-items inside that category, or upload your own sample images to preview.</p>
+                    <p class="text-slate-600 text-sm mt-2 max-w-xl">Click any card to explore all options and sub-items included in that category.</p>
                 </div>
 
                 <div class="flex flex-wrap gap-2" role="group" aria-label="Portfolio Filter">
@@ -508,17 +508,9 @@
                                     <stop offset="65%" stop-color="#FDF6E7"/>
                                     <stop offset="100%" stop-color="#F5E6CC"/>
                                 </linearGradient>
-                                <linearGradient id="emeraldLeaf" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#15803D"/>
-                                    <stop offset="100%" stop-color="#052E16"/>
-                                </linearGradient>
                                 <linearGradient id="tealPalm" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" stop-color="#0D9488"/>
                                     <stop offset="100%" stop-color="#115E59"/>
-                                </linearGradient>
-                                <linearGradient id="terracottaBloom" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#FB923C"/>
-                                    <stop offset="100%" stop-color="#C2410C"/>
                                 </linearGradient>
                                 <linearGradient id="lionMane" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" stop-color="#D97706"/>
@@ -886,19 +878,6 @@
                     <div id="modal-items-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-4"></div>
                 </div>
 
-                <!-- Upload Your Own Sample Image Into This Collection -->
-                <div class="p-4 rounded-2xl bg-amber-50/80 border border-gold-500/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div>
-                        <p class="text-sm font-bold text-navy-900"><i class="fa-solid fa-cloud-arrow-up text-gold-600 mr-1.5"></i>Add / Preview Your Own Image</p>
-                        <p class="text-xs text-slate-600 mt-0.5">Upload a design or photo from your device to preview it inside this collection right away.</p>
-                    </div>
-                    <label class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-gold-400 text-xs font-semibold cursor-pointer transition shrink-0">
-                        <i class="fa-solid fa-upload"></i>
-                        <span>Upload Image</span>
-                        <input id="modal-image-upload" type="file" accept="image/*" class="hidden">
-                    </label>
-                </div>
-
                 <!-- Key Highlights -->
                 <div>
                     <h4 class="text-xs font-bold uppercase tracking-wider text-navy-900 mb-2.5">What's Included</h4>
@@ -1087,8 +1066,7 @@
             });
         });
 
-        // 4. Multi-Item Gallery Details + Image Upload Support
-        // Replace image filenames below with images uploaded to your repo (or use "Upload Image" inside the modal)
+        // 4. Multi-Item Gallery Details
         const galleryDetails = {
             card1: {
                 category: 'Digital Invitations',
@@ -1216,7 +1194,6 @@
         const closeModalBtn = document.getElementById('close-modal-btn');
         const modalCloseSecondary = document.getElementById('modal-close-secondary');
         const modalQuoteBtn = document.getElementById('modal-quote-btn');
-        const modalImageUpload = document.getElementById('modal-image-upload');
 
         let activeCardId = null;
 
@@ -1233,7 +1210,6 @@
                             <div>
                                 <i class="fa-solid fa-image text-gold-400 text-xl mb-1"></i>
                                 <p class="text-[11px] font-semibold text-white">${item.name}</p>
-                                <p class="text-[10px] text-slate-400 mt-0.5">Upload image or add ${item.image}</p>
                             </div>
                         </div>
                     </div>
@@ -1273,24 +1249,6 @@
             modal.classList.add('flex');
             document.body.style.overflow = 'hidden';
         }
-
-        // Allow uploading an image directly inside the modal to preview it in the collection
-        modalImageUpload.addEventListener('change', (e) => {
-            const file = e.target.files && e.target.files[0];
-            if (!file || !activeCardId) return;
-
-            const reader = new FileReader();
-            reader.onload = () => {
-                galleryDetails[activeCardId].items.unshift({
-                    image: reader.result,
-                    name: file.name.replace(/\.[^/.]+$/, ''),
-                    detail: 'Uploaded sample preview for this collection.'
-                });
-                renderModalSubItems(activeCardId);
-                modalImageUpload.value = '';
-            };
-            reader.readAsDataURL(file);
-        });
 
         portfolioCards.forEach(card => {
             card.addEventListener('click', () => {
