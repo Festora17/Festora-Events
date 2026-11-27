@@ -776,20 +776,31 @@
                             </div>
                         </div>
 
-                        <div>
+                       <div>
                             <label for="event-notes" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">Theme, Budget &amp; Notes</label>
                             <textarea id="event-notes" name="notes" rows="3" placeholder="Share preferred colors/themes, return gift or T-shirt quantities, venue location, or budget range..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-navy-900 focus:ring-2 focus:ring-gold-500/30 outline-none text-sm transition"></textarea>
+                            <div class="mt-3">
+                                <label for="reference-images" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">Reference Images (Optional)</label>
+                                <input type="file" id="reference-images" name="referenceImages" accept="image/*" multiple class="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-navy-900 file:text-gold-400 hover:file:bg-navy-800 cursor-pointer transition" />
+                            </div>
                         </div>
-                        <div>
-        <label for="reference-images" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">Reference Images (Optional)</label>
-        <input type="file" id="reference-images" name="referenceImages" accept="image/*" multiple class="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-navy-900 file:text-gold-400 hover:file:bg-navy-800 cursor-pointer transition" />
-    </div>
-</div>
 
                         <button type="submit" class="w-full py-4 px-6 rounded-xl bg-navy-900 hover:bg-navy-800 text-gold-400 font-bold text-base transition-all shadow-lg flex items-center justify-center gap-2.5 whitespace-nowrap cursor-pointer">
-    <span>Submit Quote Request</span>
-    <i class="fa-solid fa-paper-plane text-sm"></i>
-</button>
+                            <span>Submit Quote Request</span>
+                            <i class="fa-solid fa-paper-plane text-sm"></i>
+                        </button>
+
+                        <div id="form-success" class="hidden p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-sm">
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-emerald-600 text-lg mt-0.5"></i>
+                                <div>
+                                    <p class="font-bold">Thank you! Your inquiry has been received.</p>
+                                    <p id="form-summary" class="text-xs text-emerald-800 mt-1"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
                         <div id="form-success" class="hidden p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-sm">
                             <div class="flex items-start gap-3">
                                 <i class="fa-solid fa-circle-check text-emerald-600 text-lg mt-0.5"></i>
